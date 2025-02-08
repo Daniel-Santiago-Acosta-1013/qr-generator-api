@@ -1,6 +1,6 @@
 import os
 import uuid
-from domain.repositories.qr_code_repository import QRCodeRepository
+from src.domain.repositories.qr_code_repository import QRCodeRepository
 
 class FileQRCodeRepository(QRCodeRepository):
     def __init__(self, storage_path: str = "media/qr_codes"):

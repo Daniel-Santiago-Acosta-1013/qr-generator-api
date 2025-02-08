@@ -1,6 +1,6 @@
 import qrcode
 from io import BytesIO
-from domain.services.qr_generator import QRGenerator
+from src.domain.services.qr_generator import QRGenerator
 
 class QRGeneratorService(QRGenerator):
     def generate(self, data: str) -> bytes:

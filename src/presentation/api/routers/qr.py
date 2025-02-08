@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException, Request
 from fastapi.responses import FileResponse
-from application.use_cases.generate_qr import GenerateQRUseCase
-from domain.repositories.qr_code_repository import QRCodeRepository
-from domain.services.qr_generator import QRGenerator
-from presentation.api.models import QRGenerateRequest, QRUrlResponse
-from presentation.dependencies import get_qr_repository, get_qr_generator
+from src.application.use_cases.generate_qr import GenerateQRUseCase
+from src.domain.repositories.qr_code_repository import QRCodeRepository
+from src.domain.services.qr_generator import QRGenerator
+from src.presentation.api.models import QRGenerateRequest, QRUrlResponse
+from src.presentation.dependencies import get_qr_repository, get_qr_generator
 
 router = APIRouter()
 
@@ -17,7 +17,7 @@ async def generate_qr(
 ):
     use_case = GenerateQRUseCase(qr_generator, qr_repository)
     qr_id = use_case.execute(data.data)
-    return {"qr_url": f"{request.base_url}qr/{qr_id}"}
+    return {"qr_url": f"{request.base_url}api/qr/{qr_id}"}
 
 @router.get("/qr/{qr_id}")
 async def get_qr(
